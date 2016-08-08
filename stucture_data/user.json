@@ -1,0 +1,18 @@
+{
+  "id": "",
+  "name": "",
+  "isWorker": "", // User or Worker 
+  "password": "",
+  "location": {
+    "address": "",
+    "city": "",
+    "ward": "",
+    "district": "",
+    "lat": "",
+    "long": ""
+  },
+  "createdAt": "",
+  "history": [
+    "idTicket"
+  ]
+}
