@@ -1,13 +1,14 @@
 {
   "id": "",
-  "name": "",
+  "title": "",
+  "category": "",
+  "imageUrl": "",
+  "createdAt": "",
   "status": "", // Pending by user 
-  "createBy": {
-    "id": "",
-    "name"
+  "createBy": { // Id User 
+    "id": ""
   },
-  "responsible" : {
-    "id": "",
-    "name": ""
+  "responsible" : { // Id Worker
+    "id": ""
   }
 }

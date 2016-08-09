@@ -8,11 +8,12 @@
     "city": "",
     "ward": "",
     "district": "",
-    "lat": "",
-    "long": ""
+    "latitude": "",
+    "longtidue": ""
   },
   "createdAt": "",
   "history": [
     "idTicket"
-  ]
+  ],
+  "profileImagePath": ""
 }
