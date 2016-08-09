@@ -1,6 +1,7 @@
 {
   "id": "",
   "name": "",
+  "email": "",
   "isWorker": "", // User or Worker 
   "password": "",
   "location": {
@@ -11,9 +12,10 @@
     "latitude": "",
     "longtidue": ""
   },
+  "phoneNumber": "",
   "createdAt": "",
   "history": [
     "idTicket"
   ],
-  "profileImagePath": ""
+  "imageUrl": ""
 }
