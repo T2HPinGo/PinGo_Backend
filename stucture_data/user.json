@@ -11,5 +11,12 @@
   },
   "phoneNumber": "",
   "createdAt": "",
-  "imageUrl": ""
+  "imageUrl": "",
+  "rating": [
+    {
+      "id": "", // Id user
+      "valueRate": "" // Float type
+    }
+  ],
+  "averageRating": "" // Float type rating
 }
