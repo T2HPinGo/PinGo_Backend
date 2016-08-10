@@ -1,21 +1,15 @@
 {
   "id": "",
-  "name": "",
+  "username": "",
   "email": "",
   "isWorker": "", // User or Worker 
   "password": "",
   "location": {
     "address": "",
-    "city": "",
-    "ward": "",
-    "district": "",
     "latitude": "",
     "longtidue": ""
   },
   "phoneNumber": "",
   "createdAt": "",
-  "history": [
-    "idTicket"
-  ],
   "imageUrl": ""
 }

@@ -16,6 +16,7 @@
     "gulp": "^3.9.1",
     "gulp-develop-server": "^0.5.2",
     "gulp-livereload": "^3.8.1",
+    "lwip": "0.0.9",
     "mongoose": "^4.5.8",
     "morgan": "^1.7.0",
     "multer": "^1.2.0",

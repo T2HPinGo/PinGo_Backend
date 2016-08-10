@@ -7,6 +7,7 @@ var UserSchema = new mongoose.Schema({
     isWorker: Boolean,
     location: {
         address: String,
+        city: String,
         latitude: String,
         longtitude: String,
     },
@@ -17,3 +18,4 @@ var UserSchema = new mongoose.Schema({
 });
 // Export the Mongoose model
 module.exports = mongoose.model('User', UserSchema);
+
