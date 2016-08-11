@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var UserSchema = new mongoose.Schema({
+var WorkerSchema = new mongoose.Schema({
     id: String,
     email: String,
     username: String,
@@ -13,6 +13,8 @@ var UserSchema = new mongoose.Schema({
     },
     createdAt: String,
     phoneNumber: String,
+    rating: [], 
+    averageRating: Number,
     profileImage: {
         imageUrl: String,
         width : Number,
