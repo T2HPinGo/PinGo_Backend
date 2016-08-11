@@ -1,14 +1,19 @@
 {
-  "id": "",
-  "title": "",
-  "category": "",
-  "imageUrl": "",
-  "createdAt": "",
-  "status": "", // Pending by user 
-  "createBy": { // Id User 
-    "id": ""
-  },
-  "responsible" : { // Id Worker
-    "id": ""
-  }
+    "id": "",
+    "title": "",
+    "category": "",
+    "imageUrl": "",
+    "createdAt": "",
+    "status": "", // Pending by user 
+    "createBy": { // Id User 
+        "id": ""
+    },
+    "location": {
+        "address": "",
+        "latitude": "",
+        "longtidue": ""
+    },
+    "responsible": { // Id Worker
+        "id": ""
+    }
 }

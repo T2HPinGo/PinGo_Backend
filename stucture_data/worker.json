@@ -14,7 +14,12 @@
     "createdAt": "",
     "profileImage": {
         "imageUrl": "",
-        "width" : "",
+        "width": "",
         "height": ""
     }
+    "rating": [{
+        "id": "", // Id user
+        "valueRate": "" // Float type
+    }],
+    "averageRating": "" // Float type rating
 }
