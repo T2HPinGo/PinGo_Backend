@@ -30,6 +30,9 @@ router.route(API.VERSION + '/login')
     
 router.post(API.VERSION + '/register',authController.registerAccount);
 
+router.route(API.VERSION + '/user' + "/:user_id")
+    .get(authController.userProfile)
+
 // Ticket
 router.route(API.VERSION + '/ticket')
   .post(ticketController.createNewTicket);

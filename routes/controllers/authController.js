@@ -12,6 +12,19 @@ var authController = function() {
         }
 
     };
+    // User profile 
+    var userProfile = function(req, res) {
+        try {
+            User.findById(req.params.user_id, function(err, user) {
+                if (err) res.send(err);
+                res.json(user);
+            });
+        } catch (err) {
+            pingoLogger.log(err);
+            res.json("Error");
+        }
+
+    };
     // Register and Update Profile
     var registerAccount = function(req, res) {
         try {
@@ -26,8 +39,9 @@ var authController = function() {
 
     }
     return {
-        "login": login,
-        "registerAccount": registerAccount
+        login: login,
+        registerAccount: registerAccount,
+        userProfile: userProfile
     }
 }();
 module.exports = authController;
