@@ -6,6 +6,7 @@ var multer = require('multer');
 var configDatabase = require('./utils/configDatabase');
 var pingoLogger = require('./utils/pingoLogger');
 var API = require('./utils/apiConstant');
+
 // Multer Upload file
 var uploadImage = multer({
     dest: './images'
@@ -15,8 +16,13 @@ var upload = multer()
 var authController = require('./controllers/authController');
 var imageController = require('./controllers/imageController');
 var ticketController = require('./controllers/ticketController');
+var socketController = require('./controllers/socketController');
 // Connect to the Ezmart MongoDB
 mongoose.connect(configDatabase.urlConnection());
+
+
+// Socket
+socketController.initSocket();
 
 // /login
 router.route(API.VERSION + '/login')
@@ -43,6 +49,5 @@ router.route(API.VERSION + API.IMAGE_TICKET + "/:file")
     
 router.post(API.VERSION + API.IMAGE_TICKET, uploadImage.single('imageTicket'),
     imageController.postImageTicket);
-
 // Export router
 module.exports = router;
