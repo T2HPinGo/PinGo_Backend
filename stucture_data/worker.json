@@ -16,8 +16,8 @@
         "imageUrl": "",
         "width": "",
         "height": ""
-    }
-    "rating": [{
+    },
+    "rating":  [{
         "id": "", // Id user
         "valueRate": "" // Float type
     }],

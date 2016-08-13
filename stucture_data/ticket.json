@@ -2,11 +2,19 @@
     "id": "",
     "title": "",
     "category": "",
-    "imageUrl": "",
+    "ticketImages": [
+        {
+            "imageUrl": "",
+            "width": "",
+            "height" : ""
+        }
+    ],
     "createdAt": "",
     "status": "", // Pending by user 
     "createBy": { // Id User 
-        "id": ""
+        "id": "",
+        "username": "",
+        "phoneNumber": ""
     },
     "location": {
         "address": "",
@@ -14,6 +22,9 @@
         "longtidue": ""
     },
     "responsible": { // Id Worker
-        "id": ""
-    }
+        "id": "",
+        "userName" : "",
+        "phoneNumber": ""
+    },
+    "isUrgent" : ""
 }

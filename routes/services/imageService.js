@@ -4,7 +4,7 @@ var pingoLogger = require('../utils/pingoLogger');
 var fs = require('fs');
 var imageService = function() {
     var getImageWithPath = function(res, pathFile) {
-        
+
         var img = fs.readFileSync(pathFile);
         res.writeHead(200, {
             'Content-Type': 'image/jpg'
@@ -15,15 +15,15 @@ var imageService = function() {
     * pathContent : /image/category or /image/product
     */
     var postImageWithPath = function(req, res, pathFile, width, heigth, pathContent, typeImage) {
-        pingoLogger.log(pathFile)
-        var fileName = req.file.originalname;
+        var fileName = req.file.filename;
         var path = req.file.path;
         pingoLogger.log("Path: " + path);
         fs.readFile(path, function(err, data) {
             lwip.open(data, typeImage, function(err, image) {
                 if (err) throw err;
                 // lanczos
-                var newFileName = fileName;
+                var unix = Math.round(+new Date()/1000);
+                var newFileName = fileName + "-" + unix + ".jpg";
                 pingoLogger.log(newFileName);
                 var newPath = pathFile + newFileName;
                 image.resize(width, heigth, 'nearest-neighbor', function(err, rzdImg) {

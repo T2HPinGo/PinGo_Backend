@@ -8,9 +8,13 @@ const CONFIG = function() {
     var getPathImageUser = function(){
         return SRC_PATH + "/images/profile/";
     };
+    var getPathImageTicket = function(){
+        return SRC_PATH + "/images/ticket/";
+    }
     return {
         getIpAddress: getIpAddress,
-        getPathImageUser:getPathImageUser
+        getPathImageUser:getPathImageUser,
+        getPathImageTicket: getPathImageTicket
     }
 }();
 module.exports = CONFIG;

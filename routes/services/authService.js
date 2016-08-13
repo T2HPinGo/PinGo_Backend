@@ -5,15 +5,30 @@ var Transformer = require('../utils/transformer')
 var authService = function() {
     var updateUser = function(req, res, user) {
         Transformer.transformJsonToUser(user, req.body)
-        user.save(function(err) {
-            if (err)
-                res.send(err);
-            res.json({
-                status: 200,
-                message: 'User has been created',
-                data: user
-            });
+        User.findOne({
+            email: user.email
+        }, function(err, userItem) {
+            console.log("Register Log: " + userItem)
+            if (err) res.send(err);
+            // If user not found 
+            if (userItem) {
+                res.json({
+                    status: 401,
+                    message: "User have been existed"
+                });
+            } else {
+                user.save(function(err) {
+                    if (err)
+                        res.send(err);
+                    res.json({
+                        status: 200,
+                        message: 'User has been created',
+                        data: user
+                    });
+                });
+            }
         });
+
     };
     return {
         updateUser: updateUser
