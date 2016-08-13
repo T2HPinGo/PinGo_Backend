@@ -24,10 +24,12 @@ var transformer = function() {
         profileImage["imageUrl"] = jsonData.imageUrl;
         profileImage["width"] = jsonData.width;
         profileImage["height"] = jsonData.height;
-        user.profileImage = jsonData.profileImage;
+        user.profileImage = profileImage;
 
         // Add data for Worker
         user.isWorker = jsonData.isWorker
+        console.log("IsWorker: ")
+        console.log(jsonData.isWorker)
         if (user.isWorker) {
             user.rating = []; 
             user.averageRating = 0;

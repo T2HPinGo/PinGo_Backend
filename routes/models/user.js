@@ -17,7 +17,9 @@ var UserSchema = new mongoose.Schema({
         imageUrl: String,
         width : Number,
         height: Number
-    }
+    },
+    rating: [], 
+    averageRating: Number
 
 });
 // Export the Mongoose model

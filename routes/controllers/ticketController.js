@@ -5,27 +5,45 @@ var ticketService = require('../services/ticketService');
 var ticketController = function() {
 
     var createNewTicket = function(req, res) {
-        var ticket = new Ticket();
-        ticketService.createNewTicket(req, res, ticket);
+        try {
+            var ticket = new Ticket();
+            ticketService.createNewTicket(req, res, ticket);
+        } catch (err) {
+            pingoLogger.log(err);
+            res.json("Error");
+        }
+
     };
     var showTicket = function(req, res) {
-        Ticket.findById(req.params.ticket_id, function(err, ticket) {
-            if (err) res.send(err);
-            res.json(ticket);
-        });
-    };
-    var deleteTicket= function(req, res) {
-        // Use the Beer model to find a specific beer and remove it
-        Ticket.remove({
-            _id: req.params.ticket_id
-        }, function(err) {
-            if (err)
-                res.send(err);
-            res.json({
-                status: 200,
-                message: 'Ticket removed from the locker!'
+        try {
+            Ticket.findById(req.params.ticket_id, function(err, ticket) {
+                if (err) res.send(err);
+                res.json(ticket);
             });
-        });
+        } catch (err) {
+            pingoLogger.log(err);
+            res.json("Error");
+        }
+
+    };
+    var deleteTicket = function(req, res) {
+        try {
+            Ticket.remove({
+                _id: req.params.ticket_id
+            }, function(err) {
+                if (err)
+                    res.send(err);
+                res.json({
+                    status: 200,
+                    message: 'Ticket removed from the locker!'
+                });
+            });
+        } catch (err) {
+            pingoLogger.log(err);
+            res.json("Error");
+        }
+        // Use the Beer model to find a specific beer and remove it
+
     };
     return {
         createNewTicket: createNewTicket,

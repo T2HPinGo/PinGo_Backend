@@ -9,23 +9,47 @@ var CONSTANT = require('../utils/constants');
 var imageController = function() {
     // Profile image
     var getImageProfile = function(req, res) {
-        var file = req.params.file;
-        imageService.getImageWithPath(res, config.getPathImageUser() + file);
+        try {
+            var file = req.params.file;
+            imageService.getImageWithPath(res, config.getPathImageUser() + file);
+        } catch (err) {
+            pingoLogger.log(err)
+            res.json("Error:");
+        }
+
     };
     var postImageProfile = function(req, res) {
-        imageService.postImageWithPath(req, res, config.getPathImageUser(),
-            60, 60, '/images/profile/', 'jpg');
+        try {
+            imageService.postImageWithPath(req, res, config.getPathImageUser(),
+                60, 60, '/images/profile/', 'jpg');
+        } catch (err) {
+            pingoLogger.log(err)
+            res.json("Error:");
+        }
+
     };
 
     // Ticket image
-    var getImageTicket= function(req, res) {
-        var file = req.params.file;
-        imageService.getImageWithPath(res, config.getPathImageTicket() + file);
+    var getImageTicket = function(req, res) {
+        try {
+            var file = req.params.file;
+            imageService.getImageWithPath(res, config.getPathImageTicket() + file);
+        } catch (err) {
+            pingoLogger.log(err)
+            res.json("Error:");
+        }
+
     };
 
     var postImageTicket = function(req, res) {
-        imageService.postImageWithPath(req, res, config.getPathImageTicket(),
-            400, 300, '/images/ticket/', 'jpg');
+        try {
+            imageService.postImageWithPath(req, res, config.getPathImageTicket(),
+                400, 300, '/images/ticket/', 'jpg');
+        } catch (err) {
+            pingoLogger.log(err)
+            res.json("Error:");
+        }
+
     };
     return {
         postImageProfile: postImageProfile,

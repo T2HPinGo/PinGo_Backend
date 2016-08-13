@@ -15,6 +15,7 @@ var imageService = function() {
     * pathContent : /image/category or /image/product
     */
     var postImageWithPath = function(req, res, pathFile, width, heigth, pathContent, typeImage) {
+        console.log(req.file);
         var fileName = req.file.filename;
         var path = req.file.path;
         pingoLogger.log("Path: " + path);
