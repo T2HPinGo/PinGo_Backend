@@ -19,7 +19,7 @@ var socketController = function() {
                 ticket["title"] = title
                 ticket["urgent"] = urgent
                 ticket["workerName"] = workerName
-            
+
                 io.emit("newTicketForCategoryA", ticket)
                 console.log("Create new ticket: " + ticket["userName"])
                 console.log("applyTicket-" + title)
@@ -30,9 +30,11 @@ var socketController = function() {
                 io.emit("newWorker", workerName)
             });
 
-            clientSocket.on("CategoryChanel", function(ticket){
-              console.log(ticket.username);
-              io.emit("newTicket", ticket);
+            clientSocket.on("CategoryChanel", function(ticket) {
+                console.log("CategoryChanel")
+                console.log(ticket);
+                console.log(ticket.title);
+                io.emit("newTicket", ticket);
             });
 
             clientSocket.on("workerBidTicket", function(worker, idTicket) {

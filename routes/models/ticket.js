@@ -10,15 +10,25 @@ var TicketSchema = new mongoose.Schema({
         latitude: String,
         longtitude: String,
     },
-     createBy: { // Id User 
+    createBy: { // Id User 
         id: String,
         userName: String,
-        phoneNumber: String
+        phoneNumber: String,
+        profileImage: {
+            imageUrl: String,
+            width: Number,
+            height: Number
+        }
     },
     responsible: {
-      id: String,
-      userName: String,
-      phoneNumber: String
+        id: String,
+        userName: String,
+        phoneNumber: String,
+        profileImage: {
+            imageUrl: String,
+            width: Number,
+            height: Number
+        }
     },
     createdAt: String,
     isUrgent: Boolean,

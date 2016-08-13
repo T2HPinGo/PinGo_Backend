@@ -14,6 +14,7 @@ var ticketController = function() {
         }
 
     };
+    
     var showTicket = function(req, res) {
         try {
             Ticket.findById(req.params.ticket_id, function(err, ticket) {

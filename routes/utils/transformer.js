@@ -73,6 +73,12 @@ var transformer = function() {
         createBy["id"] = jsonData.idUser;
         createBy["username"] = jsonData.nameOfUser;
         createBy["phoneNumber"] = jsonData.phoneOfUser;
+        // Profile image User
+        var profileImageUser = {}
+        profileImageUser["imageUrl"] = jsonData.imageUserUrl;
+        profileImageUser["width"] = jsonData.widthOfProfile;
+        profileImageUser["height"] = jsonData.heightOfProfile;
+        createBy["profileImage"] = profileImageUser;
         ticket.createBy = createBy;
 
         // Location
@@ -88,6 +94,13 @@ var transformer = function() {
         responsible["id"] = jsonData.idWorker;
         responsible["username"] = jsonData.nameOfWorker;
         responsible["phoneNumber"] = jsonData.phoneOfWorker;
+        ticket.responsible = responsible;
+        // Profile image Worker
+        var profileImageWorker = {}
+        profileImageWorker["imageUrl"] = jsonData.imageWorkerUrl;
+        profileImageWorker["width"] = jsonData.widthOfProfile;
+        profileImageWorker["height"] = jsonData.heightOfProfile;
+        responsible["profileImage"] = profileImageWorker;
         ticket.responsible = responsible;
 
         // Urgent
