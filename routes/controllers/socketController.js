@@ -1,8 +1,8 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var User = require('../models/User');
-var Ticket = require('../models/Ticket');
+var User = require('../models/user');
+var Ticket = require('../models/ticket');
 
 http.listen(4000, function() {
     console.log('Listening ne on *:4000');
