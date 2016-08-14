@@ -1,7 +1,6 @@
 var fs = require('fs');
 var pingoLogger = require('../utils/pingoLogger');
 var config = require('../configureImagePath');
-var lwip = require('lwip');
 var imageService = require('../services/imageService');
 var CONSTANT = require('../utils/constants');
 // Create endpoint /api/v1/images/upload
