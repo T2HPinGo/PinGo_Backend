@@ -12,7 +12,7 @@ var TicketSchema = new mongoose.Schema({
     },
     createBy: { // Id User 
         id: String,
-        userName: String,
+        username: String,
         phoneNumber: String,
         profileImage: {
             imageUrl: String,
@@ -22,7 +22,7 @@ var TicketSchema = new mongoose.Schema({
     },
     responsible: {
         id: String,
-        userName: String,
+        username: String,
         phoneNumber: String,
         profileImage: {
             imageUrl: String,
@@ -32,7 +32,9 @@ var TicketSchema = new mongoose.Schema({
     },
     createdAt: String,
     isUrgent: Boolean,
-    status: String
+    status: String,
+    timeBegin: String,
+    workingHour: String
 });
 // Export the Mongoose model
 module.exports = mongoose.model('Ticket', TicketSchema);

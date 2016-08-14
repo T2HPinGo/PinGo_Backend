@@ -105,6 +105,8 @@ var transformer = function() {
 
         // Urgent
         ticket.urgent = jsonData.urgent;
+        ticket.timeBegin = jsonData.timeBegin;
+        ticket.workingHour = jsonData.workingHour;
     };
     return {
       transformJsonToUser: transformJsonToUser,

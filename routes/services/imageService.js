@@ -1,7 +1,7 @@
 // Import file
-var lwip = require('lwip');
 var pingoLogger = require('../utils/pingoLogger');
 var fs = require('fs');
+var easyimg = require('easyimage');
 var imageService = function() {
     var getImageWithPath = function(res, pathFile) {
 
@@ -12,34 +12,37 @@ var imageService = function() {
         res.end(img, 'binary');
     };
     /**
-    * pathContent : /image/category or /image/product
-    */
-    var postImageWithPath = function(req, res, pathFile, width, heigth, pathContent, typeImage) {
+     * pathContent : /image/category or /image/product
+     */
+    var postImageWithPath = function(req, res, pathFile, width, height, pathContent, typeImage) {
         console.log(req.file);
         var fileName = req.file.filename;
         var path = req.file.path;
         pingoLogger.log("Path: " + path);
         fs.readFile(path, function(err, data) {
-            lwip.open(data, typeImage, function(err, image) {
-                if (err) throw err;
-                // lanczos
-                var unix = Math.round(+new Date()/1000);
-                var newFileName = fileName + "-" + unix + ".jpg";
-                pingoLogger.log(newFileName);
-                var newPath = pathFile + newFileName;
-                image.resize(width, heigth, 'nearest-neighbor', function(err, rzdImg) {
-                    rzdImg.writeFile(newPath, function(err) {
-                        if (err) throw err;
-                        fs.unlink(path);
-
-                        res.json({
-                            status: 200,
-                            message: "Upload image successfully",
-                            url: pathContent + newFileName
-                        })
-                    });
-                });
-            });
+            let unix = Math.round(+new Date() / 1000);
+            let newFileName = fileName + "-" + unix + ".jpg";
+            pingoLogger.log(newFileName);
+            let newPath = pathFile + newFileName;
+            easyimg.rescrop({
+                src: path,
+                dst: newPath,
+                width: width,
+                height: height
+            }).then(
+                function(image) {
+                    console.log('Resized and cropped: ' + image.width + ' x ' + image.height);
+                    fs.unlink(path);
+                    res.json({
+                        status: 200,
+                        message: "Upload image successfully",
+                        url: pathContent + newFileName
+                    })
+                },
+                function(err) {
+                    console.log(err);
+                }
+            );
         });
     }
     return {

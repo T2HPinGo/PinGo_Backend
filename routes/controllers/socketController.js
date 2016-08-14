@@ -29,7 +29,7 @@ var socketController = function() {
                 console.log("ApplyTicket")
                 io.emit("newWorker", workerName)
             });
-
+            
             clientSocket.on("CategoryChanel", function(ticket) {
                 console.log("CategoryChanel")
                 console.log(ticket);
