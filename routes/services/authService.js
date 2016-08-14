@@ -36,7 +36,8 @@ var authService = function() {
                 } else {
                     response = {
                         "status": 200,
-                        "message": "Login successfully"
+                        "message": "Login successfully",
+                        "data": user
                     }
                 }
             }

@@ -4,10 +4,10 @@ var transformer = function() {
        
         // Location 
         var location = {}
-        location["address"] = jsonData.address;
-        location["city"] = jsonData.city;
-        location["latitude"] = jsonData.latitude
-        location["longtitude"] = jsonData.longtitude
+        location["address"] = (jsonData.address) ? jsonData.address : "" ;
+        location["city"] = (jsonData.city) ? jsonData.city : "";
+        location["latitude"] = (jsonData.latitude) ? jsonData.latitude : "";
+        location["longtitude"] = (jsonData.longtitude) ? jsonData.longtitude : "";
         user.location = location;
         
         // Created At
@@ -18,7 +18,9 @@ var transformer = function() {
         user.email = jsonData.email;
         user.password = jsonData.password;
         user.username= jsonData.username;
-
+        user.firstname = jsonData.firstname;
+        user.lastname = jsonData.lastname;
+        user.isFemale= jsonData.isFemale;
         // Profile Image
         var profileImage = {}
         profileImage["imageUrl"] = jsonData.imageUrl;
@@ -33,6 +35,7 @@ var transformer = function() {
         if (user.isWorker) {
             user.rating = []; 
             user.averageRating = 0;
+            user.category = jsonData.category;
         }
     };
 
@@ -105,8 +108,9 @@ var transformer = function() {
 
         // Urgent
         ticket.urgent = jsonData.urgent;
-        ticket.timeBegin = jsonData.timeBegin;
         ticket.workingHour = jsonData.workingHour;
+        ticket.description = jsonData.description;
+        ticket.payment = jsonData.payment;
     };
     return {
       transformJsonToUser: transformJsonToUser,

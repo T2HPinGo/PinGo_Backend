@@ -1,6 +1,8 @@
 {
     "id": "",
     "username": "",
+    "firstname": "",
+    "lastname": "",
     "email": "",
     "isWorker": "", // User or Worker 
     "password": "",

@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 var UserSchema = new mongoose.Schema({
     id: String,
     email: String,
+    firstname: String,
+    lastname: String,
     username: String,
     password: String,
     isWorker: Boolean,
@@ -19,7 +21,9 @@ var UserSchema = new mongoose.Schema({
         height: Number
     },
     rating: [], 
-    averageRating: Number
+    averageRating: Number,
+    isFemale: Boolean,
+    category: String
 
 });
 // Export the Mongoose model
