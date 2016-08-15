@@ -17,6 +17,16 @@ var ticketService = function() {
 
         });
     };
+    // var updateWorkerForTicket = function(req, res, ticket_id){
+    //     Ticket.findOne({
+    //         _id: ticket_id
+    //     }, function(err, userItem) {
+    //         console.log("Register Log: " + userItem)
+    //         if (err) res.send(err);
+    //         // If user not found 
+           
+    //     });
+    // }
     return {
       createNewTicket: createNewTicket
     }

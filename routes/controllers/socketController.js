@@ -20,9 +20,9 @@ var socketController = function() {
                 io.emit("newTicket", ticket);
             });
 
-            clientSocket.on("workerBidTicket", function(worker, idTicket) {
-                console.log("ApplyTicket")
-                io.emit("newWorkerForTicket", worker, idTicket);
+            clientSocket.on("workerBidTicket", function(worker, idTicket, price) {
+                console.log("ApplyTicket: " + worker["username"] + "--" + idTicket)
+                io.emit("newWorkerForTicket", worker, idTicket, price);
             });
         });
     };

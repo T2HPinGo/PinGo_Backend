@@ -14,7 +14,7 @@ var ticketController = function() {
         }
 
     };
-    
+
     var showTicket = function(req, res) {
         try {
             Ticket.findById(req.params.ticket_id, function(err, ticket) {
@@ -46,9 +46,42 @@ var ticketController = function() {
         // Use the Beer model to find a specific beer and remove it
 
     };
+    var updateWorkerForTicket = function(req, res) {
+        var responsible = {
+            "id": req.body.idWorker,
+            "username": req.body.nameOfWorker,
+            "phoneNumber": req.body.phoneNumber,
+            "profileImage": {
+                "imageUrl": req.body.imageOfWorker,
+                "width": 60,
+                "height": 60
+            }
+        }
+        Ticket.findOne({
+            _id: req.params.ticket_id
+        }, function(err, ticket) {
+            if (!err) {
+                ticket.responsible = responsible
+                ticket.status = "Inservice"
+                if (!ticket) {
+
+                }
+                ticket.save(function(err) {
+                    if (err)
+                        res.send(err);
+                    res.json({
+                        status: 200,
+                        message: 'Ticket has been updated',
+                        data: ticket
+                    });
+                });
+            }
+        });
+    }
     return {
         createNewTicket: createNewTicket,
-        showTicket: showTicket
+        showTicket: showTicket,
+        updateWorkerForTicket: updateWorkerForTicket
     }
 
 }();

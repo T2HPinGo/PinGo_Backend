@@ -38,19 +38,20 @@ router.route(API.VERSION + '/ticket')
   .post(ticketController.createNewTicket);
 
 router.route(API.VERSION + '/ticket' + "/:ticket_id")
-    .get(ticketController.showTicket)
-
+    .get(ticketController.showTicket);
+router.route(API.VERSION + '/ticket' + "/:ticket_id")
+    .post(ticketController.updateWorkerForTicket);
 
 // Image
 router.route(API.VERSION + API.IMAGE_PROFILE + "/:file")
     .get(imageController.getImageProfile);
-router.post(API.VERSION + API.IMAGE_PROFILE, uploadImage.single('profileImage'),
+router.post(API.VERSION + API.IMAGE_PROFILE, uploadImage.single('imageUpload'),
     imageController.postImageProfile);
 
 router.route(API.VERSION + API.IMAGE_TICKET + "/:file")
     .get(imageController.getImageTicket);
     
-router.post(API.VERSION + API.IMAGE_TICKET, uploadImage.single('imageTicket'),
+router.post(API.VERSION + API.IMAGE_TICKET, uploadImage.single('imageUpload'),
     imageController.postImageTicket);
 // Export router
 module.exports = router;
