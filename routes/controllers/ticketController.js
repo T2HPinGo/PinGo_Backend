@@ -138,7 +138,7 @@ var ticketController = function() {
     // Get tickets in category
     var getTicketInCategory = function(req, res) {
         try {
-            let statusTicket == "Pending"
+            let statusTicket = "Pending"
             let categoryRequest = req.body.category;
             Ticket.find({
                 status: statusTicket,

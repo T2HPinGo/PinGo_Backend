@@ -41,7 +41,7 @@ var authController = function() {
     // Rating Worker
     var ratingWorker = function(req, res) {
         try {
-            var ratingOfUser {
+            var ratingOfUser = {
                 ratingValue: req.body.rating,
                 id: req.body.idUser
             };
