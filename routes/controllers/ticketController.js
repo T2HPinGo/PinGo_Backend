@@ -113,7 +113,7 @@ var ticketController = function() {
 
                 Ticket.find({
                     status: statusTicket,
-                    responsible: {
+                    createBy: {
                         id: idUser
                     }
                 }, function(err, tickets) {
