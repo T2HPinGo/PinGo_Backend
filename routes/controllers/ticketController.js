@@ -105,7 +105,31 @@ var ticketController = function() {
             res.json("Error");
         }
     };
-    // Get History ticket
+    // Get User ticket 
+    var getUserTickets = function(req, res) {
+            try {
+                let statusTicket = req.body.statusTicket;
+                let idUser = req.body.idUser;
+
+                Ticket.find({
+                    status: statusTicket,
+                    responsible: {
+                        id: idUser
+                    }
+                }, function(err, tickets) {
+                    if (err) res.send(err);
+                    res.json({
+                        status: 200,
+                        message: 'History tickets',
+                        data: tickets
+                    });
+                });
+            } catch (err) {
+                pingoLogger.log(err);
+                res.json("Error");
+            }
+        }
+        // Get History ticket
     var getHistoryTicket = function(req, res) {
         try {
             let statusTicket = req.body.statusTicket;
@@ -116,19 +140,13 @@ var ticketController = function() {
                 responsible: {
                     id: idWoker
                 }
-            }, function(err, ticket) {
-                if (!err) {
-                    ticket.status = status;
-                    ticket.save(function(err) {
-                        if (err)
-                            res.send(err);
-                        res.json({
-                            status: 200,
-                            message: 'History tickets',
-                            data: ticket
-                        });
-                    });
-                }
+            }, function(err, tickets) {
+                if (err) res.send(err);
+                res.json({
+                    status: 200,
+                    message: 'History tickets',
+                    data: tickets
+                });
             });
         } catch (err) {
             pingoLogger.log(err);
@@ -143,19 +161,13 @@ var ticketController = function() {
             Ticket.find({
                 status: statusTicket,
                 category: categoryRequest
-            }, function(err, ticket) {
-                if (!err) {
-                    ticket.status = status;
-                    ticket.save(function(err) {
-                        if (err)
-                            res.send(err);
-                        res.json({
-                            status: 200,
-                            message: 'Category tickets',
-                            data: ticket
-                        });
-                    });
-                }
+            }, function(err, tickets) {
+                if (err) res.send(err);
+                res.json({
+                    status: 200,
+                    message: 'History tickets',
+                    data: tickets
+                });
             });
         } catch (err) {
             pingoLogger.log(err);
@@ -168,7 +180,8 @@ var ticketController = function() {
         updateWorkerForTicket: updateWorkerForTicket,
         updateStatusOfTicket: updateStatusOfTicket,
         getHistoryTicket: getHistoryTicket,
-        getTicketInCategory: getTicketInCategory
+        getTicketInCategory: getTicketInCategory,
+        getUserTickets: getUserTickets
     }
 
 }();
