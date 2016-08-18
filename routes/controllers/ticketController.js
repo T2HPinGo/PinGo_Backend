@@ -83,7 +83,7 @@ var ticketController = function() {
     };
     var updateStatusOfTicket = function(req, res) {
         try {
-            var status = "Done"
+            var status = req.body.statusTicket;
             Ticket.findOne({
                 _id: req.params.ticket_id
             }, function(err, ticket) {
@@ -104,12 +104,71 @@ var ticketController = function() {
             pingoLogger.log(err);
             res.json("Error");
         }
+    };
+    // Get History ticket
+    var getHistoryTicket = function(req, res) {
+        try {
+            let statusTicket = req.body.statusTicket;
+            let idWorker = req.body.idWoker;
+
+            Ticket.find({
+                status: statusTicket,
+                responsible: {
+                    id: idWoker
+                }
+            }, function(err, ticket) {
+                if (!err) {
+                    ticket.status = status;
+                    ticket.save(function(err) {
+                        if (err)
+                            res.send(err);
+                        res.json({
+                            status: 200,
+                            message: 'History tickets',
+                            data: ticket
+                        });
+                    });
+                }
+            });
+        } catch (err) {
+            pingoLogger.log(err);
+            res.json("Error");
+        }
+    };
+    // Get tickets in category
+    var getTicketInCategory = function(req, res) {
+        try {
+            let statusTicket == "Pending"
+            let categoryRequest = req.body.category;
+            Ticket.find({
+                status: statusTicket,
+                category: categoryRequest
+            }, function(err, ticket) {
+                if (!err) {
+                    ticket.status = status;
+                    ticket.save(function(err) {
+                        if (err)
+                            res.send(err);
+                        res.json({
+                            status: 200,
+                            message: 'Category tickets',
+                            data: ticket
+                        });
+                    });
+                }
+            });
+        } catch (err) {
+            pingoLogger.log(err);
+            res.json("Error");
+        }
     }
     return {
         createNewTicket: createNewTicket,
         showTicket: showTicket,
         updateWorkerForTicket: updateWorkerForTicket,
-        updateStatusOfTicket: updateStatusOfTicket
+        updateStatusOfTicket: updateStatusOfTicket,
+        getHistoryTicket: getHistoryTicket,
+        getTicketInCategory: getTicketInCategory
     }
 
 }();
