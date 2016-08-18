@@ -112,8 +112,8 @@ var ticketController = function() {
                 let idUser = req.body.idUser;
 
                 Ticket.find({
-                    status: statusTicket,
-                    createBy.id: idUser
+                    status = statusTicket,
+                    'createBy.id' : idUser
                 }, function(err, tickets) {
                     if (err) res.send(err);
                     res.json({
