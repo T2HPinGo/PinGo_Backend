@@ -42,10 +42,10 @@ router.route(API.VERSION + '/ticket' + "/:ticket_id")
 router.route(API.VERSION + '/ticket' + "/:ticket_id")
     .post(ticketController.updateWorkerForTicket);
 router.route(API.VERSION + '/ticketOnCategory')
-    .get(ticketController.getTicketInCategory);
+    .post(ticketController.getTicketInCategory);
 
 router.route(API.VERSION + '/userTickets')
-    .get(ticketController.getUserTickets);
+    .post(ticketController.getUserTickets);
 
 
 // Image
