@@ -113,9 +113,7 @@ var ticketController = function() {
 
                 Ticket.find({
                     status: statusTicket,
-                    createBy: {
-                        id: idUser
-                    }
+                    createBy.id: idUser
                 }, function(err, tickets) {
                     if (err) res.send(err);
                     res.json({
