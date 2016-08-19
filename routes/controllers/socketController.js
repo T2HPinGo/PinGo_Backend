@@ -22,9 +22,9 @@ var socketController = function() {
                 console.log("ApplyTicket: " + worker["username"] + "--" + idTicket);
                 io.emit("newWorkerForTicket", worker, idTicket, price);
             });
-            clientSocket.on("updateTicket", function(worker, ticket){
-                console.log("UpdateTicket: " + ticket["title"]);
-                io.emit("changeStatusTicket", worker,ticket);
+            clientSocket.on("updateTicket", function(idTicket, statusTicket){
+                console.log("UpdateTicket: " + idTicket + " - " + statusTicket);
+                io.emit("changeStatusTicket", idTicket, statusTicket);
             });
         });
     };
