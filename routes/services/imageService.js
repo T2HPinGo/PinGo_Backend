@@ -9,7 +9,9 @@ var imageService = function() {
         res.writeHead(200, {
             'Content-Type': 'image/jpg'
         });
-        res.end(img, 'binary');
+        res.write('<html><body><img src="data:image/jpeg;base64,')
+        res.write(new Buffer(img).toString('base64'));
+         res.end('"/></body></html>');
     };
     /**
      * pathContent : /image/category or /image/product
@@ -33,7 +35,9 @@ var imageService = function() {
                 function(image) {
                     console.log('Resized and cropped: ' + image.width + ' x ' + image.height);
                     fs.unlink(path);
-                    res.writeHead(200, {'Content-Type': 'image/jpg' });
+                    res.writeHead(200, {
+                        'Content-Type': 'image/jpg'
+                    });
                     res.json({
                         status: 200,
                         message: "Upload image successfully",
