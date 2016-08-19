@@ -24,7 +24,7 @@ mongoose.connect(configDatabase.urlConnection());
 // Socket
 socketController.initSocket();
 
-// /login
+// /auth
 router.route(API.VERSION + '/login')
     .post(authController.login);
     
@@ -32,6 +32,9 @@ router.post(API.VERSION + '/register',authController.registerAccount);
 
 router.route(API.VERSION + '/user' + "/:user_id")
     .get(authController.userProfile)
+
+router.route(API.VERSION + '/updateUser')
+    .get(authController.updateProfileUser)
 
 // Ticket
 router.route(API.VERSION + '/ticket')

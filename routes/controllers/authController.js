@@ -68,12 +68,37 @@ var authController = function() {
             res.json("Error");
         }
     };
-
+    var updateProfileUser = function (req, res){ 
+        try {
+            var phoneNumber = req.body.phoneNumber;
+            var idUser = req.body.idUser;
+            User.findOne({
+                _id: req.params.idUser
+            }, function(err, user) {
+                if (!err) {
+                    user.phoneNumber = phoneNumber
+                    user.save(function(err) {
+                        if (err)
+                            res.send(err);
+                        res.json({
+                            status: 200,
+                            message: 'User has been updated status',
+                            data: ticket
+                        });
+                    });
+                }
+            });
+        } catch(err) {
+            pingoLogger.log(err);
+            res.json("Error");
+        }
+    };
     return {
         login: login,
         registerAccount: registerAccount,
         userProfile: userProfile,
-        ratingWorker: ratingWorker
+        ratingWorker: ratingWorker,
+        updateProfileUser: updateProfileUser
     }
 }();
 module.exports = authController;
