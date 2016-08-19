@@ -1,8 +1,6 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var User = require('../models/user');
-var Ticket = require('../models/ticket');
 
 http.listen(4000, function() {
     console.log('Listening ne on *:4000');
@@ -21,8 +19,12 @@ var socketController = function() {
             });
 
             clientSocket.on("workerBidTicket", function(worker, idTicket, price) {
-                console.log("ApplyTicket: " + worker["username"] + "--" + idTicket)
+                console.log("ApplyTicket: " + worker["username"] + "--" + idTicket);
                 io.emit("newWorkerForTicket", worker, idTicket, price);
+            });
+            clientSocket.on("updateTicket", function(worker, ticket){
+                console.log("UpdateTicket: " + ticket["title"]);
+                io.emit("changeStatusTicket", worker,ticket);
             });
         });
     };
