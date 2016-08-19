@@ -33,6 +33,7 @@ var imageService = function() {
                 function(image) {
                     console.log('Resized and cropped: ' + image.width + ' x ' + image.height);
                     fs.unlink(path);
+                    res.writeHead(200, {'Content-Type': 'image/jpg' });
                     res.json({
                         status: 200,
                         message: "Upload image successfully",
