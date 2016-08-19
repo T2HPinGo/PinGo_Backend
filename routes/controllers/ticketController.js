@@ -85,6 +85,7 @@ var ticketController = function() {
         try {
             let status = req.body.statusTicket;
             let idTicket = req.body.idTicket;
+            pingoLogger.log("Update Status of Ticket: " + idTicket);
             Ticket.findOne({
                 _id: idTicket
             }, function(err, ticket) {
