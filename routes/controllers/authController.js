@@ -73,10 +73,10 @@ var authController = function() {
             var phoneNumber = req.body.phoneNumber;
             var idUser = req.body.idUser;
             User.findOne({
-                _id: req.params.idUser
+                _id: idUser
             }, function(err, user) {
                 if (!err) {
-                    user.phoneNumber = phoneNumber
+                    user.phoneNumber = phoneNumber;
                     user.save(function(err) {
                         if (err)
                             res.send(err);
