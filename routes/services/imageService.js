@@ -6,12 +6,8 @@ var imageService = function() {
     var getImageWithPath = function(res, pathFile) {
 
         var img = fs.readFileSync(pathFile);
-        res.writeHead(200, {
-            'Content-Type': 'image/jpg'
-        });
-        res.write('<html><body><img src="data:image/jpeg;base64,')
-        res.write(new Buffer(img).toString('base64'));
-        res.end(img, 'binary');
+        res.writeHead(200, {'Content-Type': 'image/jpeg'});
+        res.end(img);
     };
     /**
      * pathContent : /image/category or /image/product
