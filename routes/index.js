@@ -34,7 +34,7 @@ router.route(API.VERSION + '/user' + "/:user_id")
     .get(authController.userProfile)
 
 router.route(API.VERSION + '/updateUser')
-    .get(authController.updateProfileUser)
+    .post(authController.updateProfileUser)
 
 // Ticket
 router.route(API.VERSION + '/ticket')
