@@ -11,7 +11,7 @@ var imageService = function() {
         });
         res.write('<html><body><img src="data:image/jpeg;base64,')
         res.write(new Buffer(img).toString('base64'));
-         res.end('"/></body></html>');
+        res.end(img, 'binary');
     };
     /**
      * pathContent : /image/category or /image/product
