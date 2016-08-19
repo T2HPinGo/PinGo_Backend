@@ -83,7 +83,7 @@ var authController = function() {
                         res.json({
                             status: 200,
                             message: 'User has been updated status',
-                            data: ticket
+                            data: user
                         });
                     });
                 }
