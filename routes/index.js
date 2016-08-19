@@ -50,8 +50,8 @@ router.route(API.VERSION + '/ticketOnCategory')
 router.route(API.VERSION + '/userTickets')
     .post(ticketController.getUserTickets);
 
-router.route(API.VERSION + '/updateStatusTicket')
-    .post(ticketController.getUserTickets);
+router.route(API.VERSION + '/updateStatusOfTicket')
+    .post(ticketController.updateStatusOfTicket);
 // Image
 router.route(API.VERSION + API.IMAGE_PROFILE + "/:file")
     .get(imageController.getImageProfile);
