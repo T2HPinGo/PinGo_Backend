@@ -84,7 +84,7 @@ var ticketController = function() {
     var updateStatusOfTicket = function(req, res) {
         try {
             let status = req.body.statusTicket;
-            let idTicket = require.body.idTicket;
+            let idTicket = req.body.idTicket;
             Ticket.findOne({
                 _id: idTicket
             }, function(err, ticket) {
