@@ -43,7 +43,8 @@ router.route(API.VERSION + '/ticket')
 router.route(API.VERSION + '/ticket' + "/:ticket_id")
     .get(ticketController.showTicket);
 router.route(API.VERSION + '/ticket' + "/:ticket_id")
-    .post(ticketController.updateWorkerForTicket);
+    .post(ticketController.updateWorkerForTicket)
+    .delete(ticketController.deleteTicket);;
 router.route(API.VERSION + '/ticketOnCategory')
     .post(ticketController.getTicketInCategory);
 
@@ -52,6 +53,8 @@ router.route(API.VERSION + '/userTickets')
 
 router.route(API.VERSION + '/updateStatusOfTicket')
     .post(ticketController.updateStatusOfTicket);
+
+route.route(API.VERSIO)
 // Image
 router.route(API.VERSION + API.IMAGE_PROFILE + "/:file")
     .get(imageController.getImageProfile);

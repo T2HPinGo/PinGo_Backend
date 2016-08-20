@@ -216,7 +216,8 @@ var ticketController = function() {
         updateStatusOfTicket: updateStatusOfTicket,
         getHistoryTicket: getHistoryTicket,
         getTicketInCategory: getTicketInCategory,
-        getUserTickets: getUserTickets
+        getUserTickets: getUserTickets,
+        deleteTicket: deleteTicket
     }
 
 }();

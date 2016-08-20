@@ -11,7 +11,7 @@ var transformer = function() {
         user.location = location;
         
         // Created At
-        let unix = Math.round(+new Date()/1000);
+        let unix = Math.round((new Date()).getTime() / 1000);
         user.createdAt = unix + "";
         // Phone Number
         user.phoneNumber = jsonData.phoneNumber;
@@ -68,7 +68,7 @@ var transformer = function() {
         ticket.status = jsonData.status;
 
         // CreatedAt
-        let unix = Math.round(+new Date()/1000);
+        let unix = Math.round((new Date()).getTime() / 1000);
         ticket.createdAt = unix + "";
 
         // CreateBy
