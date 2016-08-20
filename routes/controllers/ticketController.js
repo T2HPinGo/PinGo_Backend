@@ -175,13 +175,13 @@ var ticketController = function() {
                     $or: [{
                         status: "Pending"
                     }, {
-                        category: category
+                        category: categoryRequest
                     }]
                 }, {
                     $or: [{
                         status: "InService"
                     }, {
-                        category: category
+                        category: categoryRequest
                     },{
                         idWoker: idWoker
                     }]
@@ -189,7 +189,7 @@ var ticketController = function() {
                     $or: [{
                         status: "Done"
                     }, {
-                        category: category
+                        category: categoryRequest
                     },{
                         idWoker: idWoker
                     }]
