@@ -56,7 +56,8 @@ var ticketController = function() {
                     "imageUrl": req.body.imageOfWorker,
                     "width": 60,
                     "height": 60
-                }
+                },
+                "price": req.body.price
             }
             Ticket.findOne({
                 _id: req.params.ticket_id

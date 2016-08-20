@@ -20,6 +20,7 @@ var socketController = function() {
 
             clientSocket.on("workerBidTicket", function(worker, idTicket, price) {
                 console.log("ApplyTicket: " + worker["username"] + "--" + idTicket);
+                console.log("ApplyTicket: " + price);
                 io.emit("newWorkerForTicket", worker, idTicket, price);
             });
             clientSocket.on("updateTicket", function(idTicket, statusTicket, idUser){

@@ -97,7 +97,9 @@ var transformer = function() {
         responsible["id"] = jsonData.idWorker;
         responsible["username"] = jsonData.nameOfWorker;
         responsible["phoneNumber"] = jsonData.phoneOfWorker;
+        responsible["price"] = "";
         ticket.responsible = responsible;
+
         // Profile image Worker
         var profileImageWorker = {}
         profileImageWorker["imageUrl"] = jsonData.imageWorkerUrl;

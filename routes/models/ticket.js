@@ -28,7 +28,8 @@ var TicketSchema = new mongoose.Schema({
             imageUrl: String,
             width: Number,
             height: Number
-        }
+        },
+        ticket: String
     },
     createdAt: String,
     isUrgent: Boolean,
