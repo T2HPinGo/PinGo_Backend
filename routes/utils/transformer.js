@@ -113,6 +113,7 @@ var transformer = function() {
         ticket.workingHour = jsonData.workingHour;
         ticket.description = jsonData.description;
         ticket.payment = jsonData.payment;
+        ticket.descriptions = jsonData.descriptions;
     };
     return {
       transformJsonToUser: transformJsonToUser,

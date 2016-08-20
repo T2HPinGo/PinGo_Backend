@@ -41,9 +41,12 @@ router.route(API.VERSION + '/ticket')
   .post(ticketController.createNewTicket);
 
 router.route(API.VERSION + '/ticket' + "/:ticket_id")
-    .get(ticketController.showTicket);
-router.route(API.VERSION + '/ticket' + "/:ticket_id")
+    .get(ticketController.showTicket)
     .post(ticketController.updateWorkerForTicket)
+    .delete(ticketController.deleteTicket);
+
+router.route(API.VERSION + '/ticket' + "/:ticket_id")
+    
     .delete(ticketController.deleteTicket);;
 router.route(API.VERSION + '/ticketOnCategory')
     .post(ticketController.getTicketInCategory);
