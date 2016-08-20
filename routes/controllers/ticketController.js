@@ -158,9 +158,42 @@ var ticketController = function() {
         try {
             let statusTicket = req.body.status
             let categoryRequest = req.body.category;
-            Ticket.find({
-                status: statusTicket,
-                category: categoryRequest
+            let idWoker = req.body.idWorker
+            // Ticket.find({
+            //     status: statusTicket,
+            //     category: categoryRequest
+            // }, function(err, tickets) {
+            //     if (err) res.send(err);
+            //     res.json({
+            //         status: 200,
+            //         message: 'History tickets',
+            //         data: tickets
+            //     });
+            // });
+             Ticket.find({
+                $and: [{
+                    $or: [{
+                        status: "Pending"
+                    }, {
+                        category: category
+                    }]
+                }, {
+                    $or: [{
+                        status: "InService"
+                    }, {
+                        category: category
+                    },{
+                        idWoker: idWoker
+                    }]
+                }, {
+                    $or: [{
+                        status: "Done"
+                    }, {
+                        category: category
+                    },{
+                        idWoker: idWoker
+                    }]
+                }]
             }, function(err, tickets) {
                 if (err) res.send(err);
                 res.json({
@@ -169,6 +202,7 @@ var ticketController = function() {
                     data: tickets
                 });
             });
+                 
         } catch (err) {
             pingoLogger.log(err);
             res.json("Error");
