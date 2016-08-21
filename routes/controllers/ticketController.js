@@ -136,7 +136,8 @@ var ticketController = function() {
             let idWorker = req.body.idWorker;
             console.log("History ticket: " + idWorker);
             Ticket.find({
-                'responsible.id': idWorker
+                'responsible.id': idWorker,
+                status: statusTicket
             }, function(err, tickets) {
                 if (err) res.send(err);
                 res.json({
