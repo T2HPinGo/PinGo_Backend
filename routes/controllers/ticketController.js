@@ -120,7 +120,7 @@ var ticketController = function() {
                     if (err) res.send(err);
                     res.json({
                         status: 200,
-                        message: 'History tickets',
+                        message: 'User tickets',
                         data: tickets
                     });
                 });
@@ -134,7 +134,7 @@ var ticketController = function() {
         try {
             let statusTicket = req.body.statusTicket;
             let idWorker = req.body.idWorker;
-
+            console.log("History ticket: " + idWorker);
             Ticket.find({
                 'responsible.id': idWorker
             }, function(err, tickets) {
