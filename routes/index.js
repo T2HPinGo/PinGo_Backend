@@ -36,6 +36,8 @@ router.route(API.VERSION + '/user' + "/:user_id")
 router.route(API.VERSION + '/updateUser')
     .post(authController.updateProfileUser)
 
+router.route(API.VERSION + '/adminUpdateUser')
+    .post(au)
 // Ticket
 router.route(API.VERSION + '/ticket')
   .post(ticketController.createNewTicket);
@@ -45,9 +47,9 @@ router.route(API.VERSION + '/ticket' + "/:ticket_id")
     .post(ticketController.updateWorkerForTicket)
     .delete(ticketController.deleteTicket);
 
-router.route(API.VERSION + '/ticket' + "/:ticket_id")
-    
-    .delete(ticketController.deleteTicket);;
+router.route(API.VERSION + '/historytickets')
+  .post(ticketController.getHistoryTicket);
+
 router.route(API.VERSION + '/ticketOnCategory')
     .post(ticketController.getTicketInCategory);
 
