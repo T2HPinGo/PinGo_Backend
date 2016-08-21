@@ -135,6 +135,7 @@ var ticketController = function() {
             let statusTicket = req.body.statusTicket;
             let idUser = req.body.idUser;
             let isWorker = req.body.isWorker;
+            console.log(isWorker);
             if (isWorker) {
                 console.log("History ticket of worker: " + idUser);
                 Ticket.find({
