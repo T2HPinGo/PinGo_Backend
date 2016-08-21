@@ -133,19 +133,36 @@ var ticketController = function() {
     var getHistoryTicket = function(req, res) {
         try {
             let statusTicket = req.body.statusTicket;
-            let idWorker = req.body.idWorker;
-            console.log("History ticket: " + idWorker);
-            Ticket.find({
-                'responsible.id': idWorker,
-                status: statusTicket
-            }, function(err, tickets) {
-                if (err) res.send(err);
-                res.json({
-                    status: 200,
-                    message: 'History tickets',
-                    data: tickets
+            let idUser = req.body.idUser;
+            let isWorker = req.body.isWorker;
+            if isWorker {
+                console.log("History ticket of worker: " + idUser);
+                Ticket.find({
+                    'responsible.id': idUser,
+                    status: statusTicket
+                }, function(err, tickets) {
+                    if (err) res.send(err);
+                    res.json({
+                        status: 200,
+                        message: 'History tickets',
+                        data: tickets
+                    });
                 });
-            });
+            } else {
+                console.log("History ticket of user: " + idUser);
+                 Ticket.find({
+                    'createBy.id': idUser,
+                    status: statusTicket
+                }, function(err, tickets) {
+                    if (err) res.send(err);
+                    res.json({
+                        status: 200,
+                        message: 'History tickets',
+                        data: tickets
+                    });
+                });
+            }
+
         } catch (err) {
             pingoLogger.log(err);
             res.json("Error");
