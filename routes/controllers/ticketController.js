@@ -135,6 +135,11 @@ var ticketController = function() {
             let statusTicket = req.body.statusTicket;
             let idUser = req.body.idUser;
             let isWorker = req.body.isWorker;
+            if (isWorker == "true" {
+                console.log("Test true");
+            } else {
+                console.log("Test false");
+            }
             console.log(isWorker);
             if (isWorker) {
                 console.log("History ticket of worker: " + idUser);
