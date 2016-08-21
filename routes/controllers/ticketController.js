@@ -133,12 +133,12 @@ var ticketController = function() {
     var getHistoryTicket = function(req, res) {
         try {
             let statusTicket = req.body.statusTicket;
-            let idWorker = req.body.idWoker;
+            let idWorker = req.body.idWorker;
 
             Ticket.find({
                 status: statusTicket,
                 responsible: {
-                    id: idWoker
+                    id: idWorker
                 }
             }, function(err, tickets) {
                 if (err) res.send(err);
