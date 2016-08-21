@@ -115,7 +115,6 @@ var ticketController = function() {
                 let idUser = req.body.idUser;
 
                 Ticket.find({
-                    status: statusTicket,
                     'createBy.id': idUser
                 }, function(err, tickets) {
                     if (err) res.send(err);
@@ -160,18 +159,18 @@ var ticketController = function() {
             let statusTicket = req.body.status
             let categoryRequest = req.body.category;
             let idWoker = req.body.idWorker
-            // Ticket.find({
-            //     status: statusTicket,
-            //     category: categoryRequest
-            // }, function(err, tickets) {
-            //     if (err) res.send(err);
-            //     res.json({
-            //         status: 200,
-            //         message: 'History tickets',
-            //         data: tickets
-            //     });
-            // });
-             Ticket.find({
+                // Ticket.find({
+                //     status: statusTicket,
+                //     category: categoryRequest
+                // }, function(err, tickets) {
+                //     if (err) res.send(err);
+                //     res.json({
+                //         status: 200,
+                //         message: 'History tickets',
+                //         data: tickets
+                //     });
+                // });
+            Ticket.find({
                 $and: [{
                     $or: [{
                         status: "Pending"
@@ -183,7 +182,7 @@ var ticketController = function() {
                         status: "InService"
                     }, {
                         category: categoryRequest
-                    },{
+                    }, {
                         idWoker: idWoker
                     }]
                 }, {
@@ -191,7 +190,7 @@ var ticketController = function() {
                         status: "Done"
                     }, {
                         category: categoryRequest
-                    },{
+                    }, {
                         idWoker: idWoker
                     }]
                 }]
@@ -203,7 +202,7 @@ var ticketController = function() {
                     data: tickets
                 });
             });
-                 
+
         } catch (err) {
             pingoLogger.log(err);
             res.json("Error");
