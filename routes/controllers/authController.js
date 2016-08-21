@@ -68,27 +68,22 @@ var authController = function() {
             res.json("Error");
         }
     };
-    var updateProfileUser = function (req, res){ 
+    var updateProfileUser = function(req, res) {
         try {
-            var phoneNumber = req.body.phoneNumber;
-            var idUser = req.body.idUser;
-            User.findOne({
-                _id: idUser
-            }, function(err, user) {
-                if (!err) {
-                    user.phoneNumber = phoneNumber;
-                    user.save(function(err) {
-                        if (err)
-                            res.send(err);
-                        res.json({
-                            status: 200,
-                            message: 'User has been updated status',
-                            data: user
-                        });
-                    });
-                }
+            var user = new User()
+            Transformer.transformJsonToUser(user, req.body)
+                // var phoneNumber = req.body.phoneNumber;
+                // var idUser = req.body.idUser;
+            user.save(function(err) {
+                if (err)
+                    res.send(err);
+                res.json({
+                    status: 200,
+                    message: 'User has been updated status',
+                    data: user
+                });
             });
-        } catch(err) {
+        } catch (err) {
             pingoLogger.log(err);
             res.json("Error");
         }

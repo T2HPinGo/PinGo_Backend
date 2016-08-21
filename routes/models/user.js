@@ -23,7 +23,8 @@ var UserSchema = new mongoose.Schema({
     rating: [], 
     averageRating: Number,
     isFemale: Boolean,
-    category: String
+    category: String,
+    introduce: String
 
 });
 // Export the Mongoose model

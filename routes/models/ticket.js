@@ -13,6 +13,8 @@ var TicketSchema = new mongoose.Schema({
     createBy: { // Id User 
         id: String,
         username: String,
+        firstname: String,
+        lastname: String,
         phoneNumber: String,
         profileImage: {
             imageUrl: String,
@@ -24,6 +26,8 @@ var TicketSchema = new mongoose.Schema({
         id: String,
         username: String,
         phoneNumber: String,
+        firstname: String,
+        lastname: String,
         profileImage: {
             imageUrl: String,
             width: Number,

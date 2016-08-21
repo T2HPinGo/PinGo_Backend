@@ -36,7 +36,9 @@ var transformer = function() {
             user.rating = []; 
             user.averageRating = 0;
             user.category = jsonData.category;
+            user.introduce = jsonData.introduce;
         }
+
     };
 
     var transformJsonToTicket = function(ticket, jsonData){
@@ -76,6 +78,8 @@ var transformer = function() {
         createBy["id"] = jsonData.idUser;
         createBy["username"] = jsonData.nameOfUser;
         createBy["phoneNumber"] = jsonData.phoneOfUser;
+        createBy["firstname"] = jsonData.firstnameOfUser;
+        createBy["lastname"] = jsonData.lastnameOfUser;
         // Profile image User
         var profileImageUser = {}
         profileImageUser["imageUrl"] = jsonData.imageUserUrl;
@@ -98,6 +102,8 @@ var transformer = function() {
         responsible["username"] = jsonData.nameOfWorker;
         responsible["phoneNumber"] = jsonData.phoneOfWorker;
         responsible["price"] = "";
+        responsible["firstname"] = jsonData.firstnameOfWorker;
+        responsible["lastname"] = jsonData.lastnameOfWorker;
         ticket.responsible = responsible;
 
         // Profile image Worker
@@ -113,7 +119,6 @@ var transformer = function() {
         ticket.workingHour = jsonData.workingHour;
         ticket.description = jsonData.description;
         ticket.payment = jsonData.payment;
-        ticket.descriptions = jsonData.descriptions;
     };
     return {
       transformJsonToUser: transformJsonToUser,
