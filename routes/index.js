@@ -35,9 +35,6 @@ router.route(API.VERSION + '/user' + "/:user_id")
 
 router.route(API.VERSION + '/updateUser')
     .post(authController.updateProfileUser)
-
-router.route(API.VERSION + '/adminUpdateUser')
-    .post(au)
 // Ticket
 router.route(API.VERSION + '/ticket')
   .post(ticketController.createNewTicket);
