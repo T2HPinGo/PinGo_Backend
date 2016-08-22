@@ -89,7 +89,7 @@ var authController = function() {
             res.json("Error");
         }
     };
-    var calculateAveratingOfWorker= function(req, res) {
+    var calculateAveratingOfWorker = function(req, res) {
         try {
             var idWorker = req.body.idWorker;
             Ticket.find({
@@ -98,8 +98,10 @@ var authController = function() {
                 if (err) res.send(err);
                 // Start to calculate 
                 var calculate = 0;
-                for (var i = 0 ; i < tickets.length; i ++){
-                    calculate += tickets[i].rating;
+                for (var i = 0; i < tickets.length; i++) {
+                    if tickets[i].rating != 0 {
+                        calculate += tickets[i].rating;
+                    }
                 }
                 pingoLogger.log("calculate: " + calculate);
                 calculate = calculate / (tickets.length);
