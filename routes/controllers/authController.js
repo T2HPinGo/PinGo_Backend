@@ -101,7 +101,9 @@ var authController = function() {
                 for (var i = 0 ; i < tickets.length; i ++){
                     calculate += tickets[i].rating;
                 }
+                pingoLogger.log("calculate: " + calculate);
                 calculate = calculate / (tickets.length);
+
                 res.json({
                     status: 200,
                     message: 'History tickets',
