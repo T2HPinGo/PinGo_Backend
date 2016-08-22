@@ -224,26 +224,33 @@ var ticketController = function() {
         }
     };
     var ratingForTicket = function(req, res) {
-        let idTicket = req.body.idTicket;
-        let rating = req.body.rating;
-        let comment = req.body.comment;
-        Ticket.findOne({
-            _id: idTicket
-        }, function(err, ticket) {
-            if (!err) {
-                ticket.rating = rating;
-                ticket.comment = comment;
-                ticket.save(function(err) {
-                    if (err)
-                        res.send(err);
-                    res.json({
-                        status: 200,
-                        message: 'Ticket has been updated rating',
-                        data: ticket
+        try {
+            let idTicket = req.body.idTicket;
+            let rating = req.body.rating;
+            let comment = req.body.comment;
+            console.log(rating);
+            Ticket.findOne({
+                _id: idTicket
+            }, function(err, ticket) {
+                if (!err) {
+                    ticket.rating = rating;
+                    ticket.comment = comment;
+                    ticket.save(function(err) {
+                        if (err)
+                            res.send(err);
+                        res.json({
+                            status: 200,
+                            message: 'Ticket has been updated rating',
+                            data: ticket
+                        });
                     });
-                });
-            }
-        });
+                }
+            });
+        } catch (err) {
+            pingoLogger.log(err);
+            res.json("Error");
+        }
+
     };
     return {
         createNewTicket: createNewTicket,
