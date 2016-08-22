@@ -1,7 +1,8 @@
 var User = require('../models/user');
-var Transformer = require('../utils/transformer')
-var pingoLogger = require('../utils/pingoLogger')
-var authService = require('../services/authService')
+var Ticket = require('../models/ticket');
+var Transformer = require('../utils/transformer');
+var pingoLogger = require('../utils/pingoLogger');
+var authService = require('../services/authService');
 var authController = function() {
     var login = function(req, res) {
         try {
@@ -88,12 +89,37 @@ var authController = function() {
             res.json("Error");
         }
     };
+    var calculateAveratingOfWorker= function(req, res) {
+        try {
+            var idWorker = req.body.idWorker;
+            Ticket.find({
+                'responsible.id': idWorker,
+            }, function(err, tickets) {
+                if (err) res.send(err);
+                // Start to calculate 
+                var calculate = 0;
+                for (var i = 0 ; i < tickets.length; i ++){
+                    calculate += tickets[i].rating;
+                }
+                calculate = calculate / (tickets.length);
+                res.json({
+                    status: 200,
+                    message: 'History tickets',
+                    data: calculate
+                });
+            });
+        } catch (err) {
+            pingoLogger.log(err);
+            res.json("Error");
+        }
+    }
     return {
         login: login,
         registerAccount: registerAccount,
         userProfile: userProfile,
         ratingWorker: ratingWorker,
-        updateProfileUser: updateProfileUser
+        updateProfileUser: updateProfileUser,
+        calculateAveratingOfWorker: calculateAveratingOfWorker
     }
 }();
 module.exports = authController;

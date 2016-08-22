@@ -31,10 +31,14 @@ router.route(API.VERSION + '/login')
 router.post(API.VERSION + '/register',authController.registerAccount);
 
 router.route(API.VERSION + '/user' + "/:user_id")
-    .get(authController.userProfile)
+    .get(authController.userProfile);
 
 router.route(API.VERSION + '/updateUser')
-    .post(authController.updateProfileUser)
+    .post(authController.updateProfileUser);
+
+router.route(API.VERSION + '/ratingOfWorker')
+    .post(authController.calculateAveratingOfWorker);
+
 // Ticket
 router.route(API.VERSION + '/ticket')
   .post(ticketController.createNewTicket);
