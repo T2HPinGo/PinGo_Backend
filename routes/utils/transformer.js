@@ -119,6 +119,8 @@ var transformer = function() {
         ticket.workingHour = jsonData.workingHour;
         ticket.description = jsonData.description;
         ticket.payment = jsonData.payment;
+        ticket.rating = 0;
+        ticket.comment = "";
     };
     return {
       transformJsonToUser: transformJsonToUser,

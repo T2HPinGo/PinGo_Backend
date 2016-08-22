@@ -150,7 +150,7 @@ var ticketController = function() {
                 });
             } else {
                 console.log("History ticket of user: " + idUser);
-                 Ticket.find({
+                Ticket.find({
                     'createBy.id': idUser,
                     status: statusTicket
                 }, function(err, tickets) {
@@ -222,7 +222,29 @@ var ticketController = function() {
             pingoLogger.log(err);
             res.json("Error");
         }
-    }
+    };
+    var ratingForTicket = function(req, res) {
+        let idTicket = req.body.idTicket;
+        let rating = req.body.rating;
+        let comment = req.body.comment;
+        Ticket.findOne({
+            _id: idTicket
+        }, function(err, ticket) {
+            if (!err) {
+                ticket.rating = rating;
+                ticket.comment = comment;
+                ticket.save(function(err) {
+                    if (err)
+                        res.send(err);
+                    res.json({
+                        status: 200,
+                        message: 'Ticket has been updated rating',
+                        data: ticket
+                    });
+                });
+            }
+        });
+    };
     return {
         createNewTicket: createNewTicket,
         showTicket: showTicket,
@@ -231,7 +253,8 @@ var ticketController = function() {
         getHistoryTicket: getHistoryTicket,
         getTicketInCategory: getTicketInCategory,
         getUserTickets: getUserTickets,
-        deleteTicket: deleteTicket
+        deleteTicket: deleteTicket,
+        ratingForTicket: ratingForTicket
     }
 
 }();

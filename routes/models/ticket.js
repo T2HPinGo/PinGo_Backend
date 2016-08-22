@@ -41,7 +41,9 @@ var TicketSchema = new mongoose.Schema({
     timeBegin: String,
     workingHour: String,
     descriptions: String,
-    payment: String
+    payment: String,
+    rating: Number,
+    comment: String
 });
 // Export the Mongoose model
 module.exports = mongoose.model('Ticket', TicketSchema);

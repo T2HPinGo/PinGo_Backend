@@ -55,6 +55,9 @@ router.route(API.VERSION + '/userTickets')
 
 router.route(API.VERSION + '/updateStatusOfTicket')
     .post(ticketController.updateStatusOfTicket);
+
+router.route(API.VERSION + '/ratingForTicket')
+    .post(ticketController.ratingForTicket);
 // Image
 router.route(API.VERSION + API.IMAGE_PROFILE + "/:file")
     .get(imageController.getImageProfile);
