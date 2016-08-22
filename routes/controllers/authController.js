@@ -99,7 +99,7 @@ var authController = function() {
                 // Start to calculate 
                 var calculate = 0;
                 for (var i = 0; i < tickets.length; i++) {
-                    if tickets[i].rating != 0 {
+                    if (tickets[i].rating != 0) {
                         calculate += tickets[i].rating;
                     }
                 }
