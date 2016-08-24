@@ -174,40 +174,30 @@ var ticketController = function() {
             let statusTicket = req.body.status
             let categoryRequest = req.body.category;
             let idWoker = req.body.idWorker
-                // Ticket.find({
-                //     status: statusTicket,
-                //     category: categoryRequest
-                // }, function(err, tickets) {
-                //     if (err) res.send(err);
-                //     res.json({
-                //         status: 200,
-                //         message: 'History tickets',
-                //         data: tickets
-                //     });
-                // });
+            // Ticket.find({
+            //     status: statusTicket,
+            //     category: categoryRequest
+            // }, , function(err, tickets) {
+            //     if (err) res.send(err);
+            //     res.json({
+            //         status: 200,
+            //         message: 'History tickets',
+            //         data: tickets
+            //     });
+            // });
             Ticket.find({
                 $and: [{
-                    $or: [{
-                        status: "Pending"
-                    }, {
-                        category: categoryRequest
-                    }]
+                    status: "Pending",
+                    category: categoryRequest
                 }, {
-                    $or: [{
-                        status: "InService"
-                    }, {
-                        category: categoryRequest
-                    }, {
-                        idWoker: idWoker
-                    }]
+                    status: "InService",
+                    category: categoryRequest,
+                    idWoker: idWoker
                 }, {
-                    $or: [{
-                        status: "Done"
-                    }, {
-                        category: categoryRequest
-                    }, {
-                        idWoker: idWoker
-                    }]
+                    status: "Done",
+                    category: categoryRequest,
+                    idWoker: idWoker
+
                 }]
             }, function(err, tickets) {
                 if (err) res.send(err);
