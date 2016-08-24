@@ -182,11 +182,15 @@ var ticketController = function() {
                     }]
                 }, {
                     $and: [{
-                        status: "Pending",
+                        status: "Done",
                         'responsible.id': idWorker
                     }]
+                }, {
+                    $and: [{
+                        status: "Pending",
+                        category: categoryRequest
+                    }]
                 }]
-
             }, function(err, tickets) {
                 if (err) res.send(err);
                 res.json({
