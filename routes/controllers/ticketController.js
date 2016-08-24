@@ -175,7 +175,7 @@ var ticketController = function() {
             let categoryRequest = req.body.category;
             let idWorker = req.body.idWorker
             Ticket.find({
-                $and: [{
+                $or: [{
                     $or: [{
                         'responsible.id': idWorker
                     }]
