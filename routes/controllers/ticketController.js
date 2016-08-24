@@ -183,6 +183,10 @@ var ticketController = function() {
                     $or: [{
                         status: "InService"
                     }]
+                },{
+                     $or: [{
+                        status: "Approved"
+                    }]
                 }]
 
             }, function(err, tickets) {
