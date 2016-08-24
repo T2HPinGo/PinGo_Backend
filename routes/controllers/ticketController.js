@@ -174,17 +174,16 @@ var ticketController = function() {
             let statusTicket = req.body.status
             let categoryRequest = req.body.category;
             let idWorker = req.body.idWorker
-                // Ticket.find({
-                //     status: statusTicket,
-                //     category: categoryRequest
-                // }, function(err, tickets) {
-                //     if (err) res.send(err);
-                //     res.json({
-                //         status: 200,
-                //         message: 'History tickets',
-                //         data: tickets
-                //     });
-                // });
+            Ticket.find({
+                'responsible.id': idWorker
+            }, function(err, tickets) {
+                if (err) res.send(err);
+                res.json({
+                    status: 200,
+                    message: 'History tickets',
+                    data: tickets
+                });
+            });
             // Ticket.find({
             //     $and: [{
             //         $or: [{
@@ -218,22 +217,22 @@ var ticketController = function() {
             //     });
             // });
 
-            Ticket.find({
-                $and: [{
-                    "responsible.id": idWorker,
-                },{
-                    status: "Done"
-                },{
-                    status: "InService"
-                }]
-            }, function(err, tickets) {
-                if (err) res.send(err);
-                res.json({
-                    status: 200,
-                    message: 'History tickets',
-                    data: tickets
-                });
-            });
+            // Ticket.find({
+            //     $and: [{
+            //         "responsible.id": idWorker,
+            //     },{
+            //         status: "Done"
+            //     },{
+            //         status: "InService"
+            //     }]
+            // }, function(err, tickets) {
+            //     if (err) res.send(err);
+            //     res.json({
+            //         status: 200,
+            //         message: 'History tickets',
+            //         data: tickets
+            //     });
+            // });
 
         } catch (err) {
             pingoLogger.log(err);
