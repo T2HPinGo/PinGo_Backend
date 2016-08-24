@@ -209,8 +209,24 @@ var ticketController = function() {
                         "responsible.id": idWorker
                     }]
                 }]
-            }
-            , function(err, tickets) {
+            }, function(err, tickets) {
+                if (err) res.send(err);
+                res.json({
+                    status: 200,
+                    message: 'History tickets',
+                    data: tickets
+                });
+            });
+
+            Ticket.find({
+                $and: [{
+                    "responsible.id": idWorker
+                },{
+                    status: "Done"
+                },{
+                    status: "InService"
+                }]
+            }, function(err, tickets) {
                 if (err) res.send(err);
                 res.json({
                     status: 200,
