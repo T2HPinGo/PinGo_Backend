@@ -193,7 +193,7 @@ var ticketController = function() {
                         category: categoryRequest
                     }]
                 }, {
-                    $or: [{
+                    $and: [{
                         status: "InService"
                     }, {
                         category: categoryRequest
@@ -201,7 +201,7 @@ var ticketController = function() {
                         idWoker: idWoker
                     }]
                 }, {
-                    $or: [{
+                    $and: [{
                         status: "Done"
                     }, {
                         category: categoryRequest
