@@ -176,7 +176,9 @@ var ticketController = function() {
             let idWorker = req.body.idWorker
             Ticket.find({
                 $and: [{
-                    'responsible.id': idWorker
+                    $or: [{
+                        'responsible.id': idWorker
+                    }]
                 }, {
                     $or: [{
                         status: "InService"
