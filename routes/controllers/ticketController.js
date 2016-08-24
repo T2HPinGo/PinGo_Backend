@@ -174,6 +174,7 @@ var ticketController = function() {
             let statusTicket = req.body.status
             let categoryRequest = req.body.category;
             let idWoker = req.body.idWorker
+            console.log(idWorker);
                 // Ticket.find({
                 //     status: statusTicket,
                 //     category: categoryRequest
@@ -193,24 +194,13 @@ var ticketController = function() {
                         category: categoryRequest
                     }]
                 }, {
-                    $and: [{
-                        status: "InService"
-                    }, {
-                        category: categoryRequest
-                    }, {
-                        idWoker: idWoker
-                    }]
+                    status: "InService"
                 }, {
-                    $and: [{
-                        status: "Done"
-                    }, {
-                        category: categoryRequest
-                    }, {
-                        idWoker: idWoker
-                    }]
+                    status: "Done"
+                }, {
+                    idWoker: idWoker
                 }]
-            }
-            , function(err, tickets) {
+            }, function(err, tickets) {
                 if (err) res.send(err);
                 res.json({
                     status: 200,
