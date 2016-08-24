@@ -179,6 +179,8 @@ var ticketController = function() {
                     'responsible.id': idWorker
                 }, {
                     status: "InService"
+                }, {
+                    status: "Pending"
                 }]
 
             }, function(err, tickets) {
