@@ -183,10 +183,6 @@ var ticketController = function() {
                     $or: [{
                         status: "InService"
                     }]
-                }, {
-                    $or: [{
-                        status: "Pending"
-                    }]
                 }]
 
             }, function(err, tickets) {
