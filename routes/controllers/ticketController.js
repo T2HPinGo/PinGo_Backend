@@ -185,42 +185,42 @@ var ticketController = function() {
                 //         data: tickets
                 //     });
                 // });
-            Ticket.find({
-                $and: [{
-                    $or: [{
-                        status: "Pending"
-                    }, {
-                        category: categoryRequest
-                    }]
-                }, {
-                    $or: [{
-                        status: "InService"
-                    }, {
-                        category: categoryRequest
-                    }, {
-                        "responsible.id": idWorker
-                    }]
-                }, {
-                    $or: [{
-                        status: "Done"
-                    }, {
-                        category: categoryRequest
-                    }, {
-                        "responsible.id": idWorker
-                    }]
-                }]
-            }, function(err, tickets) {
-                if (err) res.send(err);
-                res.json({
-                    status: 200,
-                    message: 'History tickets',
-                    data: tickets
-                });
-            });
+            // Ticket.find({
+            //     $and: [{
+            //         $or: [{
+            //             status: "Pending"
+            //         }, {
+            //             category: categoryRequest
+            //         }]
+            //     }, {
+            //         $or: [{
+            //             status: "InService"
+            //         }, {
+            //             category: categoryRequest
+            //         }, {
+            //             "responsible.id": idWorker
+            //         }]
+            //     }, {
+            //         $or: [{
+            //             status: "Done"
+            //         }, {
+            //             category: categoryRequest
+            //         }, {
+            //             "responsible.id": idWorker
+            //         }]
+            //     }]
+            // }, function(err, tickets) {
+            //     if (err) res.send(err);
+            //     res.json({
+            //         status: 200,
+            //         message: 'History tickets',
+            //         data: tickets
+            //     });
+            // });
 
             Ticket.find({
                 $and: [{
-                    "responsible.id": idWorker
+                    "responsible.id": idWorker,
                 },{
                     status: "Done"
                 },{
