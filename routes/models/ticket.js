@@ -33,7 +33,8 @@ var TicketSchema = new mongoose.Schema({
             width: Number,
             height: Number
         },
-        ticket: String
+        ticket: String,
+        price: String
     },
     createdAt: String,
     isUrgent: Boolean,
