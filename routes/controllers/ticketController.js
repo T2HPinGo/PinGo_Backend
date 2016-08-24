@@ -188,23 +188,29 @@ var ticketController = function() {
             Ticket.find({
                 $and: [{
                     $or: [{
-                        status: "Pending",
+                        status: "Pending"
+                    }, {
                         category: categoryRequest
                     }]
                 }, {
                     $or: [{
-                        status: "InService",
-                        category: categoryRequest,
+                        status: "InService"
+                    }, {
+                        category: categoryRequest
+                    }, {
                         idWoker: idWoker
                     }]
                 }, {
                     $or: [{
-                        status: "Done",
-                        category: categoryRequest,
+                        status: "Done"
+                    }, {
+                        category: categoryRequest
+                    }, {
                         idWoker: idWoker
                     }]
                 }]
-            },function(err, tickets) {
+            }
+            , function(err, tickets) {
                 if (err) res.send(err);
                 res.json({
                     status: 200,
