@@ -173,7 +173,7 @@ var ticketController = function() {
         try {
             let statusTicket = req.body.status
             let categoryRequest = req.body.category;
-            let idWoker = req.body.idWorker
+            let idWorker = req.body.idWorker
             console.log(idWorker);
                 // Ticket.find({
                 //     status: statusTicket,
@@ -198,7 +198,7 @@ var ticketController = function() {
                 }, {
                     status: "Done"
                 }, {
-                    idWoker: idWoker
+                    "responsible.id": idWorker
                 }]
             }, function(err, tickets) {
                 if (err) res.send(err);
