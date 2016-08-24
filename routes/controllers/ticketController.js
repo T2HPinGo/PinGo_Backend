@@ -175,7 +175,12 @@ var ticketController = function() {
             let categoryRequest = req.body.category;
             let idWorker = req.body.idWorker
             Ticket.find({
-                'responsible.id': idWorker
+                $and: [{
+                    'responsible.id': idWorker
+                }, {
+                    status: "InService"
+                }]
+
             }, function(err, tickets) {
                 if (err) res.send(err);
                 res.json({
