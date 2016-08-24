@@ -178,9 +178,13 @@ var ticketController = function() {
                 $and: [{
                     'responsible.id': idWorker
                 }, {
-                    status: "InService"
+                    $or: [{
+                        status: "InService"
+                    }]
                 }, {
-                    status: "Pending"
+                    $or: [{
+                        status: "Pending"
+                    }]
                 }]
 
             }, function(err, tickets) {
