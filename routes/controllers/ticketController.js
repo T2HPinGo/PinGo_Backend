@@ -190,11 +190,6 @@ var ticketController = function() {
                         status: "Pending",
                         category: categoryRequest
                     }]
-                },{
-                    $and: [{
-                        status: "Approved",
-                        category: categoryRequest
-                    }]
                 }]
             }, function(err, tickets) {
                 if (err) res.send(err);
@@ -203,7 +198,8 @@ var ticketController = function() {
                     message: 'History tickets',
                     data: tickets
                 });
-            });
+            })
+
         } catch (err) {
             pingoLogger.log(err);
             res.json("Error");

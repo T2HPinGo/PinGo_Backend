@@ -121,6 +121,10 @@ var transformer = function() {
         ticket.payment = jsonData.payment;
         ticket.rating = 0;
         ticket.comment = "";
+
+        // Date Begin and Time Begin 
+        ticket.dateBegin = jsonData.dateBegin;
+        ticket.timeBegin = jsonData.timeBegin; 
     };
     return {
       transformJsonToUser: transformJsonToUser,
