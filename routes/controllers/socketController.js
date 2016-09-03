@@ -18,10 +18,10 @@ var socketController = function() {
                 io.emit("newTicket", ticket);
             });
 
-            clientSocket.on("workerBidTicket", function(worker, idTicket, price, location) {
+            clientSocket.on("workerBidTicket", function(worker, idTicket, price) {
                 console.log("ApplyTicket: " + worker["username"] + "--" + idTicket);
                 console.log("ApplyTicket: " + price);
-                console.log("ApplyTicket: " + location["longtitude"] + " - " + location["latitude"]);
+                // console.log("ApplyTicket: " + location["longtitude"] + " - " + location["latitude"]);
                 io.emit("newWorkerForTicket", worker, idTicket, price);
             });
             clientSocket.on("updateTicket", function(idTicket, statusTicket, idUser){
