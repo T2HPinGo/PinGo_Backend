@@ -191,7 +191,7 @@ var ticketController = function() {
                         category: categoryRequest
                     }]
                 }]
-            }, function(err, tickets) {
+            }, {"sort" : [['createdAt', 'asc']]},function(err, tickets) {
                 if (err) res.send(err);
                 res.json({
                     status: 200,
