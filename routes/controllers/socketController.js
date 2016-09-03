@@ -22,7 +22,7 @@ var socketController = function() {
                 console.log("ApplyTicket: " + worker["username"] + "--" + idTicket);
                 console.log("ApplyTicket: " + price);
                 console.log("ApplyTicket: " + location["longtitude"] + " - " + location["latitude"]);
-                io.emit("newWorkerForTicket", worker, idTicket, price);
+                io.emit("newWorkerForTicket", worker, idTicket, price, location);
             });
             clientSocket.on("updateTicket", function(idTicket, statusTicket, idUser){
                 console.log("UpdateTicket: " + idTicket + " - " + statusTicket);

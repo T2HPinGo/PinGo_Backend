@@ -104,6 +104,8 @@ var transformer = function() {
         responsible["price"] = "";
         responsible["firstname"] = jsonData.firstnameOfWorker;
         responsible["lastname"] = jsonData.lastnameOfWorker;
+        responsible["latitude"] = "";
+        responsible["longtitude"]= "";
         ticket.responsible = responsible;
 
         // Profile image Worker
